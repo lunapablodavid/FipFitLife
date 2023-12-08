@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import './styles/LoadProduct.css';
-
+import { useRef } from 'react';
 const LoadProduct = () => {
   const initialState = {
-    id: null,
-    name: '',
+   
+    title: '',
     description: '',
     image:"",
     price: 0,
+    id: null,
   };
 
   const [product, setProduct] = useState(initialState);
   const [products, setProducts] = useState([]);
   const [editing, setEditing] = useState(false);
-
+  const [showMenu, setShowMenu] = useState(false);
+  const formRef = useRef(null);
   useEffect(() => {
     // Cargar productos desde el backend al montar el componente
     fetchProducts();
@@ -74,6 +76,10 @@ const LoadProduct = () => {
     const selectedProduct = products.find((p) => p.id === id);
     setProduct(selectedProduct);
     setEditing(true);
+    setShowMenu(true)
+  
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  
   };
 
   const handleDelete = async (id) => {
@@ -95,8 +101,16 @@ const LoadProduct = () => {
 
   return (
     <div>
-      <h2>CRUD de Productos</h2>
-      <form onSubmit={handleSubmit}>
+      <div className="btn-agregar">
+       <button onClick={() => setShowMenu(prevState => !prevState)} className="menu-button">
+        {showMenu ? 'Cerrar Menu' : 'Agregar producto'}
+      </button>
+    </div>
+    <div className='container-loadProduct'>
+      {showMenu && (
+          <div>
+            <h2>Subir Producto</h2>
+      <form ref={formRef} onSubmit={handleSubmit}>
         <label>
           Nombre:
           <input type="text" name="title" value={product.title} onChange={handleChange} />
@@ -116,13 +130,15 @@ const LoadProduct = () => {
         </label>
         <button type="submit">{editing ? 'Actualizar' : 'Agregar'}</button>
       </form>
-
+      </div>
+)}
       <table>
   <thead>
     <tr>
       <th>Nombre</th>
       <th>Descripción</th>
       <th>Url de la imagen</th>
+      <th>Imagen</th>
       <th>Precio</th>
       <th>Acciones</th>
     </tr>
@@ -132,28 +148,30 @@ const LoadProduct = () => {
       <tr key={product.id}>
         <td>{product.title}</td>
         <td>{product.description}</td>
-        <td>{product.image}</td>
+        <td><input type="text" value={product.image}/></td>
+        <td >
+          {/*Tuve que poner tanto el {product.image} en la etiqueta <td> y <img>
+           para poder mostrar la imagen y que al enviar el dato al formulario cuando se
+           quiere editar no tenga problemas(ya que uno representa un string y el otro una imagen)*/}
+
+          <img src={product.image} alt={product.title} value={product.image}   style={{ maxWidth: '100px', maxHeight: '100px' }} />
+        </td>
+       
+            
         <td>{product.price}</td>
         <td>
           {/* Añadir los botones de "Editar" y "Eliminar" */}
-          <button onClick={() => handleEdit(product.id)}>Editar</button>
+          <button onClick={() => handleEdit(product.id)}>Editar{showMenu
+          }</button>
           <button onClick={() => handleDelete(product.id)}>Eliminar</button>
         </td>
       </tr>
     ))}
   </tbody>
 </table>
-     
+
     </div>
-  );
+  );</div>)
 };
 
-export default LoadProduct; /*<ul>
-        {products.map((p) => (
-          <li key={p.id}>
-            {p.title} - {p.description} - {p.image} - ${p.price}
-            <button onClick={() => handleEdit(p.id)}>Editar</button>
-            <button onClick={() => handleDelete(p.id)}>Eliminar</button>
-          </li>
-        ))}
-      </ul>*/
+export default LoadProduct

@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import './styles/contacto.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPhoneAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import {faFacebookF, faTwitter,faInstagram,faWhatsapp} 
+ from '@fortawesome/free-brands-svg-icons';
 
-const Contacto = () => {
+
+
+
+ const Contacto = () => {
  
-  const initialState = {
+const initialState = {
     nombre: '',
     email: '',
     mensaje: '',
@@ -11,7 +18,19 @@ const Contacto = () => {
 
   const [formData, setFormData] = useState(initialState);
   const [error, setError] = useState('');
-
+  
+  
+  useEffect(() => {
+    // Agrega una clase al cuerpo cuando se monta el componente
+    document.body.classList.add('contact-body');
+  
+    // Limpia la clase cuando el componente se desmonta
+    return () => {
+      document.body.classList.remove('contact-body');
+    };
+  }, []);
+  
+  
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -49,6 +68,8 @@ const Contacto = () => {
   };
 
   return (
+    <>
+    
     <div className='contacto-container'>
       <h1>Contacto</h1>
       <br />
@@ -85,6 +106,41 @@ const Contacto = () => {
         <button type="submit">Enviar</button>
       </form>
     </div>
+    
+
+
+
+    <div className='contacto-container'>
+      {/* Contenido del formulario de contacto */}
+
+      {/* Pie de página */}
+      <div className="footer">
+        <p>Contáctanos:</p>
+        <p>
+          <FontAwesomeIcon icon={faPhoneAlt} /> Teléfono: +123456789
+        </p>
+        <div>
+          <a href="https://www.facebook.com/">
+            <FontAwesomeIcon icon={faFacebookF} />
+          </a>
+          <a href="https://twitter.com/">
+            <FontAwesomeIcon icon={faTwitter} />
+          </a>
+          <a href="https://www.instagram.com/">
+            <FontAwesomeIcon icon={faInstagram} />
+          </a>
+          <a href="https://wa.me/123456789">
+            <FontAwesomeIcon icon={faWhatsapp} />
+          </a>
+          <a href="mailto:info@example.com">
+            <FontAwesomeIcon icon={faEnvelope} />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    </>
+   
   );
 };
 

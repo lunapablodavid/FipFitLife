@@ -1,22 +1,34 @@
 /* LoadProduct.css */
 
-.load-product-container {
+.container-loadProduct {
+  justify-content: center;
   max-width: 800px;
-  margin: 20px auto;
+  margin: auto !important;
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 5px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.btn-agregar{
+  display: flex;
+  justify-content: center;
 }
 
 form {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff; /* Fondo blanco para el formulario */
 }
 
 label {
   margin-bottom: 10px;
+  text-align: left; /* Alinea el texto de las etiquetas hacia la derecha */
+  color: #333; 
 }
 
 input {
@@ -24,11 +36,14 @@ input {
   padding: 8px;
   margin-top: 5px;
   box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid #ddd; /* Borde inferior para resaltar las entradas */
+  background-color: #f8f8f8; /* Fondo gris claro para las entradas */
 }
 
 button {
   padding: 10px;
-  background-color: #007bff;
+  background: linear-gradient(to bottom, #4fc3f7, #2196f3); /* Gradiente de color para el fondo */
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -36,21 +51,74 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background: linear-gradient(to bottom, #2196f3, #1769aa); /* Cambia el color de fondo al pasar el ratón */
 }
-
+/* Estilos generales para la tabla */
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
-}
+  margin-bottom: 20px; /* Margen inferior para separar la tabla de otros elementos */
+  border-radius: 8px; /* Bordes redondeados para las esquinas de la tabla */
+  overflow: hidden; /* Oculta cualquier desbordamiento */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 100px;
+  font-family: Arial, sans-serif;}
+
+
 
 th, td {
   border: 1px solid #ddd;
-  padding: 8px;
+  padding: 12px;
   text-align: left;
 }
 
 th {
   background-color: #f2f2f2;
+}
+
+/* Estilos específicos para la imagen */
+td img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100px; /* Ajusta el ancho máximo según tus necesidades */
+  height: auto;
+}
+
+/* Estilos para los botones de acción */
+td button {
+  padding: 8px 12px;
+  margin: 4px; /* Añade un margen de 4px */
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+ 
+}
+
+td button:hover {
+  background-color: #0056b3;
+}
+.menu-button {
+  padding: 10px;
+  background: linear-gradient(to bottom, #ff9800, #f57c00); /* Gradiente de color para el fondo del botón */
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+ width: 64%;
+ margin-bottom: 20px;
+}
+
+.menu-button:hover {
+  background: linear-gradient(to bottom, #f57c00, #e65100); /* Cambia el color de fondo al pasar el ratón */
+}
+.menu-button:active {
+  background-color: #fcf80c;
+}
+.td-image{
+display: flex;
+flex-wrap: wrap;
+flex-direction: column;
+  background-color: #0056b3;
 }

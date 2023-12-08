@@ -1,34 +1,48 @@
-/* Estilos para el contenedor del carrito */
-.cartAdd {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding-top: 200px;
-  }
-  
-  /* Estilos para la lista de productos en el carrito */
-  .cartAdd ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  /* Estilos para cada elemento de la lista (producto en el carrito) */
-  .cartAdd li {
-    margin-bottom: 10px;
-    font-size: 16px;
-  }
+/* styles/Cart.css */
 
-  .cartAdd button {
-  background-color: #ff4444;
-  color: white;
+.cartAdd {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.cartAdd ul {
+  list-style: none;
+  padding: 0;
+}
+
+.cartAdd li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+.cartAdd button {
+  background-color: #e74c3c;
+  color: #fff;
   border: none;
-  padding: 5px 10px;
+  padding: 8px;
   border-radius: 4px;
   cursor: pointer;
-  margin-left: 10px;
 }
 
 .cartAdd button:hover {
-  background-color: #cc0000;
+  background-color: #c0392b;
+}
+
+.cartTotal {
+  margin-top: 20px;
+  text-align: right;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+body.cart-body {
+  background: linear-gradient(to bottom, rgb(197, 195, 196), #fff);
 }
