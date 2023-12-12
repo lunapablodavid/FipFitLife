@@ -171,7 +171,7 @@ const LoadProduct = () => {
 </table>
 
     </div>
-  );</div>)
+  </div>)
 };
 
 export default LoadProduct

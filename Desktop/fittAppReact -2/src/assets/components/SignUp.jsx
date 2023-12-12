@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
 const SignUp = ({ onClose }) => {
-  const [signupUsername, setSignupUsername] = useState('');
-  const [signupLastName, setSignupUserLastName] = useState('');
-  const [signupUpCorreo, setSignupUserCorreo] = useState('');
-  const [signupPassword, setSignupPassword] = useState('');
+  const [signupUsername, setSignupUsername] = useState('');//Variable de estado para Nombre del usuario
+  const [signupLastName, setSignupUserLastName] = useState('');//Variable de estado para Apellido
+  const [signupUpCorreo, setSignupUserCorreo] = useState('');//Variable de estado para Correo
+  const [signupPassword, setSignupPassword] = useState('');//Variable de estado para Contraseña
   const [error, setError] = useState('');
 
 

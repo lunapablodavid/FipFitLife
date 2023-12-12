@@ -1,0 +1,109 @@
+/* Reset de estilos y estilos generales */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Contenedor principal */
+.home-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Encabezado */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Contenido principal */
+.main-content {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Estilos comunes para content1, content2, content3 y content4 */
+.content {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #007bff;
+}
+
+/* Imágenes dentro de content1, content2, content3 y content4 */
+.content img {
+  width: 100%; /* Make images occupy the full width of the container */
+  height: 100%; /* Maintain the aspect ratio */
+  object-fit: cover; /* Ensure the image covers the entire container */
+}
+
+/* Navegación */
+ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  margin-right: 20px;
+}
+
+ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+ul li a:hover {
+  color: #007bff;
+}
+
+/* Pie de página */
+footer {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+  text-align: center;
+}
+
+.footer-contact p {
+  margin-bottom: 10px;
+}
+
+.social-icons a {
+  margin-right: 10px;
+  color: #333;
+  font-size: 20px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #007bff;
+}
+
+body.home-body {
+  background-color: #ebd3d3;
+}

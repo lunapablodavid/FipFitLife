@@ -4,12 +4,14 @@ import './styles/Login.css';
 import { useNavigate } from 'react-router-dom';
 
 const Login = ({ setIsAuthenticated }) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [showSignUp, setShowSignUp] = useState(false);
+  const [username, setUsername] = useState('');//Variable de estado para iniciar sesion con el usuario registrado
+  const [password, setPassword] = useState('');//Variable de estado para iniciar sesion con la contraseña
+  const [showSignUp, setShowSignUp] = useState(false);//Variable de estado para mostrar el componente re SignUp y poder registrarse
   const [loginError, setLoginError] = useState('');
   const [users, setUsers] = useState([]);
 
+
+  //Fetch para montar un body
   useEffect(() => {
     // Agrega una clase al cuerpo cuando se monta el componente
     document.body.classList.add('login-body');
@@ -19,6 +21,9 @@ const Login = ({ setIsAuthenticated }) => {
       document.body.classList.remove('login-body');
     };
   }, []);
+
+
+//Fethc para obtener los usarios
   useEffect(() => {
     // Obtener datos de usuarios desde el endpoint de NestJS
     fetch('http://localhost:3030/users/')
@@ -35,27 +40,28 @@ const Login = ({ setIsAuthenticated }) => {
 
   const navigate = useNavigate();
 
+
+  //Manejo del inicio de sesion
   const handleLogin = () => {
     const user = users.find(
       (user) => username === user.correo && password === user.contraseña
     );
-  
+  //Comprobando si existe el usuario
     if (user) {
       console.log(`Iniciando sesión con usuario: ${user.correo}`);
       setIsAuthenticated(true); // This should set isAuthenticated to true
       navigate('/');
     } else {
-      
-      set
   setLoginError('Usuario o contraseña incorrectos');
     }
   };
 
+ //Funcion para manejar el estado del componente SignUp y mostrarlo en caso de que lo invoquen
   const handleSignUpClick = () => {
     // Mostrar el componente SignUp al hacer clic en el botón "Registrarse"
     setShowSignUp(true);
   };
-
+ //Funcion para manejar el estado del componente SignUp y mostrarlo en caso de que lo invoquen
   const handleCloseSignUp = () => {
     // Ocultar el componente SignUp al cerrarlo
     setShowSignUp(false);

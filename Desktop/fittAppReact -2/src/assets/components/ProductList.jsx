@@ -46,11 +46,11 @@ return(
     </div>
 
     <div className='productlist-container'>
-      <div className="tituloContainer"> 
-        <h2>Lista de productos</h2>
-      </div>
+       <div className="tituloContainer"> 
+           <h2>Lista de productos</h2>
+       </div>
  
-      <section>
+       <section>
         {/* Mostrar todos los productos si no hay cadena de búsqueda */}
         {!searchTerm && products.map((prod) => (
           <Product

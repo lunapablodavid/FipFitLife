@@ -39,25 +39,46 @@ function App() {
   const [error, setError] = useState('');
   const [cart, setCart] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    
+      
+    //Funcion para mostrar la lista del menu en la barra nav
+    const toggleDropdown = () => {
+    
+      setIsDropdownOpen((prev) => !prev);
+    };
+
+    
+
 
   const addCart = (product) => {
-    setCart((prev) => [...prev, product]);
-    console.log(cart.length, product.id + product.title);
+
+    if (isAuthenticated) {
+      // Usuario autenticado, permite agregar al carrito
+      setCart((prev) => [...prev, product]);
+      console.log(cart.length, product.id + product.title);
+    } else {
+      setShowLoginMessage(true);
+      console.log("debe iniciar sesion para poder agregar productos al carrito")
+    }
   };
 
 
-  
+  //funcion para remover la cart 
   const removeProductFromCart = (productId) => {
-    const updatedCart = cart.filter((product) => product.id !== productId);
-    setCart(updatedCart);
+  const updatedCart = cart.filter((product) => product.id !== productId);
+     setCart(updatedCart);
     console.log('Se ha eliminado el producto del carrito');
   };
 
+
+//obtener el total del carrtito
   const getTotal = (cart) => {
     const totalPrice = cart.reduce((acum, curr) => acum + parseFloat(curr.price), 0);
     return totalPrice.toFixed(2);
   };
 
+  //obtener el carrito
   const getDerivedCart = () => {
     const derivedCart = [];
 
@@ -97,18 +118,30 @@ function App() {
   if (!products.length && !error) return <h2>Loading...</h2>;
   if (error) return <h2>{error}</h2>;
 
+
+
   return (
       <BrowserRouter>
         <nav>
           <Link to="/">Home</Link>
           <Link to="/ProductList">Productos</Link>
           <Link to="/Cart">Carro</Link>
-          <Link to="/LoadProduct">Menu</Link>
+             <div className="dropdown">
+                 <div className="dropdown-btn" onClick={toggleDropdown}>Menu</div>
+                  {isDropdownOpen && (//preguntamos si isDropdownOpen es true (valor inical: false)
+             <div className="dropdown-content">
+                  <Link to="/ejercicios">Ejercicios</Link>
+                  <Link to="/LoadProduct">Load Product</Link>
+                  <Link to="/nutricion">Nutrición</Link>
+                </div>
+               )}
+            </div>
           <Link to="/Contacto">Contacto</Link>
           <Link to="/Login">Sesion</Link>
-        </nav>
+       </nav>
 
-        <Routes>
+         <Routes>
+      
           <Route path="/" element={<Home />} />
           <Route path="/Login"element={<Login setIsAuthenticated={setIsAuthenticated} />}/>
           <Route path="/Signup" element={<SignUp />} />
@@ -122,7 +155,7 @@ function App() {
           </>
         )}   
 
-        </Routes>
+         </Routes>
       </BrowserRouter>
   
   );

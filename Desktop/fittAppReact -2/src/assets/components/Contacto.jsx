@@ -19,7 +19,7 @@ const initialState = {
   const [formData, setFormData] = useState(initialState);
   const [error, setError] = useState('');
   
-  
+  //Fetch para montar un body
   useEffect(() => {
     // Agrega una clase al cuerpo cuando se monta el componente
     document.body.classList.add('contact-body');

@@ -2,7 +2,7 @@ import React from 'react';
 import './styles/Cart.css';
 import { useEffect } from 'react';
 
-function Cart({ cart, removeProductFromCart }) {
+function Cart({ cart, removeProductFromCart,showLoginMessage }) {
   const getTotal = (cart) => {
     const totalPrice = cart.reduce((acum, curr) => {
       return acum + curr.totalPrice;
@@ -15,6 +15,11 @@ function Cart({ cart, removeProductFromCart }) {
   
     // Limpia la clase cuando el componente se desmonta
     return () => {
+      
+      {showLoginMessage && (
+        <div className="login-message">
+          Debes iniciar sesión para agregar productos al carrito.
+        </div>)}
       document.body.classList.remove('cart-body');
     };
   }, []);

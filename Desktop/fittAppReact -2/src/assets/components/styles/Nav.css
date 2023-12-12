@@ -1,16 +1,6 @@
 nav {
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  background-color: #333;
-  padding: 10px;
-  text-align: center;
-  width: 100%;
-  position:sticky;
-  top:0;
-  left:0;
-  bottom: 0;
-  margin-bottom: 50px;
+
+ 
 }
 
 /* Añade un margen superior al cuerpo para evitar que el contenido se solape con el nav */
@@ -28,4 +18,74 @@ nav a {
   
 nav a:hover {
   border-bottom: 2px solid white;
+}
+/* Add this to your existing CSS file or create a new one */
+
+/* Navigation styles */
+nav {
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: #333;
+padding: 10px;
+text-align: center;
+width: 100%;
+position:sticky;
+top:0;
+left:0;
+bottom: 0;
+margin-bottom: 50px;
+}
+
+nav a {
+color: white;
+text-decoration: none;
+margin: 0 10px;
+}
+
+/* Dropdown styles */
+.dropdown {
+position: relative;
+display: inline-block;
+}
+
+.dropdown-btn {
+background-color: #333;
+color: rgb(255, 255, 255);
+padding: 10px;
+cursor: pointer;
+border: none;
+}
+.dropdown-content {
+display:flex;
+flex-wrap: wrap;
+position: absolute;
+background-color: #f7f3f3;
+color: #681212;
+min-width: 160px; 
+box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);  
+z-index: 1;
+}
+
+.dropdown-content a {
+color: rgb(2, 1, 1);
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+}
+.dropdown-content a:hover {
+background-color: #555;
+}
+
+/* Show the dropdown content on hover */
+.dropdown:hover .dropdown-content {
+text-decoration: snow;
+}
+
+/* Additional styling for the login message */
+.login-message {
+background-color: #ffcccb;
+padding: 10px;
+margin-top: 10px;
+text-align: center;
 }
